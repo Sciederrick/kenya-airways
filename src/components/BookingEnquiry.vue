@@ -27,7 +27,10 @@
         <input class="w-full p-2 self-center focus:outline-none" type="text" name="from" id="date">
       </div>
       <div class="md:mx-auto md:w-2/3 lg:w-3/4 p-2 md:p-0">
-        <input @click="" class="w-full p-2 lg:py-4 mx-auto bg-green-700 text-white text-sm hover:bg-red-700" type="submit" name="submit" value="BOOK NOW">
+
+        <router-link :to="{name:'FlightResults'}">
+          <input class="w-full p-2 lg:py-4 mx-auto bg-green-700 text-white text-sm hover:bg-red-700" type="submit" name="submit" value="BOOK NOW">
+        </router-link>
       </div>
     </form>
   </div>
