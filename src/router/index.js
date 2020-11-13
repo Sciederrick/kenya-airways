@@ -1,27 +1,58 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import BookingEnquiry from '../components/BookingEnquiry.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    component: Home,
+    children:[
+      {
+        path: '',
+        name: 'Home',
+        component: BookingEnquiry
+      },
+      {
+        path: '/flightResults',
+        name: 'FlightResults',
+        component: () => import(/* webpackChunkName: "flight results" */ '../components/FlightResults.vue')
+      }
+    ]
+  },
+  {
+    path: '/contactUs',
+    name: 'ContactUs',
+    component: () => import(/* webpackChunkName: "contact us" */ '../views/ContactUs.vue')
   },
   {
     path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    name: 'AboutUs',
+    component: () => import(/* webpackChunkName: "about us" */ '../views/About.vue')
   }
 ]
 
 const router = new VueRouter({
   mode: 'history',
+  scrollBehavior(to, from, savedPosition){
+    if(savedPosition){
+      return savedPosition
+    }else{
+      const position = {}
+      if(to.hash){
+        position.selector = to.hash
+        if(to.hash === '#bookingEnquiry'){
+          position.offset = {y:95}
+        }
+        if(document.querySelector(to.hash)){
+          return position
+        }
+        return false
+      }
+    }
+  },
   base: process.env.BASE_URL,
   routes
 })
