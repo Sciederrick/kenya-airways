@@ -1,7 +1,10 @@
 <template>
   <div id="flightResults">
     <!-- results nav -->
-    <ResultsNav/>
+    <div id="resultsNav" class="flex justify-between py-2 px-3 md:px-5 lg:px-16 md:py-3 lg:py-4 my-4 md:my-5 lg:mx-2 bg-gray-800 text-sm md:text-base lg:text-lg text-white">
+      <span>4 results</span>
+      <span @click="$router.go(-1)" class="underline cursor-pointer">Go back</span>
+    </div>
     <!-- header -->
     <div class="mx-1 md:mx-2 lg:mx-20 lg:my-20 flex flex-row justify-between md:justify-around items-center p-2">
       <div class="w-40 h-32 md:w-48 md:h-40 lg:w-64 lg:h-56 bg-gray-700 flex flex-col justify-end rounded-sm">
@@ -22,8 +25,9 @@
     </div>
     <!-- results -->
     <div class="w-full mx-auto md:mx-2 lg:mx-24">
+      <p class="hidden md:block text-sm text-red-600 text-left pt-10 pl-10">Choose from below...</p>
       <div class="flex flex-wrap justify-center md:justify-start lg:pt-8">
-        <table class="w-full md:w-auto table-fixed my-4 lg:m-6 mx-auto text-xs lg:text-base shadow-lg lg:shadow-xl">
+        <table class="w-full md:w-auto table-fixed my-4 lg:m-6 mx-auto text-xs lg:text-base shadow-lg lg:shadow-xl cursor-pointer">
           <tr>
             <td colspan="3"><hr/></td>
           </tr>
@@ -41,7 +45,7 @@
             <td class="border-4 border-white p-2 bg-gray-100" colspan="3">ET 319 Boeing 777-300ER</td>
           </tr>
         </table>
-        <table class="w-full md:w-auto table-fixed my-4 lg:m-6 mx-auto text-xs lg:text-base shadow-lg lg:shadow-xl">
+        <table class="w-full md:w-auto table-fixed my-4 lg:m-6 mx-auto text-xs lg:text-base shadow-lg lg:shadow-xl cursor-pointer">
           <tr>
             <td colspan="3"><hr/></td>
           </tr>
@@ -59,7 +63,7 @@
             <td class="border-4 border-white p-2 bg-gray-100" colspan="3">ET 319 Boeing 777-300ER</td>
           </tr>
         </table>
-        <table class="w-full md:w-auto table-fixed my-4 lg:m-6 mx-auto text-xs lg:text-base shadow-lg lg:shadow-xl">
+        <table class="w-full md:w-auto table-fixed my-4 lg:m-6 mx-auto text-xs lg:text-base shadow-lg lg:shadow-xl cursor-pointer">
           <tr>
             <td colspan="3"><hr/></td>
           </tr>
@@ -77,7 +81,7 @@
             <td class="border-4 border-white p-2 bg-gray-100" colspan="3">ET 319 Boeing 777-300ER</td>
           </tr>
         </table>
-        <table class="w-full md:w-auto table-fixed my-4 lg:m-6 mx-auto text-xs lg:text-base shadow-lg lg:shadow-xl">
+        <table class="w-full md:w-auto table-fixed my-4 lg:m-6 mx-auto text-xs lg:text-base shadow-lg lg:shadow-xl cursor-pointer">
           <tr>
             <td colspan="3"><hr/></td>
           </tr>
@@ -102,11 +106,7 @@
 </template>
 
 <script>
-import ResultsNav from '@/components/ResultsNav.vue'
 export default {
-name:'FlightResults',
-components:{
-  ResultsNav
-}
+name:'FlightResults'
 }
 </script>

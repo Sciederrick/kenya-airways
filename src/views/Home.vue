@@ -67,24 +67,24 @@
         <div class="w-5/6 h-16 mx-auto bg-red-700 flex items-center justify-center">
           <h2 class="my-auto text-center text-white uppercase text-xl">leading staff</h2>
         </div>
-        <div class="flex justify-evenly my-16">
-          <div class="">
-            <div class="rounded-full w-40 h-40 overflow-hidden">
+        <div class="flex flex-wrap justify-evenly my-16">
+          <div class="mx-auto">
+            <div class="rounded-full mx-auto md:w-24 md:h-24 lg:w-40 lg:h-40 overflow-hidden">
               <img class="w-full h-full object-cover" :src="require('@/assets/images/michael-dam-mEZ3PoFGs_k-unsplash.jpg')" alt="CEO">
             </div>
-            <p class="font-semibold py-5 text-center">CEO Kenya Airways</p>
+            <p class="font-semibold py-5 text-center md:text-sm lg:text-base">CEO Kenya Airways</p>
           </div>
-          <div class="">
-            <div class="rounded-full w-40 h-40 overflow-hidden">
+          <div class="mx-auto">
+            <div class="rounded-full mx-auto md:w-24 md:h-24 lg:w-40 lg:h-40 overflow-hidden">
               <img class="w-full h-full object-cover" :src="require('@/assets/images/prince-akachi-J1OScm_uHUQ-unsplash.jpg')" alt="CFO">
             </div>
-            <p class="font-semibold py-5 text-center">CFO Kenya Airways</p>
+            <p class="font-semibold py-5 text-center md:text-sm lg:text-base">CFO Kenya Airways</p>
           </div>
-          <div class="">
-            <div class="rounded-full w-40 h-40 overflow-hidden">
+          <div class="mx-auto">
+            <div class="rounded-full mx-auto md:w-24 md:h-24 lg:w-40 lg:h-40 overflow-hidden">
               <img class="w-full h-full object-cover" :src="require('@/assets/images/usman-yousaf-yIOViGQmjJ4-unsplash.jpg')" alt="CTO">
             </div>
-            <p class="font-semibold py-5 text-center">CTO Kenya Airways</p>
+            <p class="font-semibold py-5 text-center md:text-sm lg:text-base">CTO Kenya Airways</p>
           </div>
         </div>
         <div class="w-5/6 mx-auto bg-red-700" style="height:1px;">
