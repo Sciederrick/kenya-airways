@@ -1,12 +1,12 @@
 <template>
   <div id="passengerDetails">
-    <!-- results nav -->
-    <div id="resultsNav" class="flex justify-between py-2 px-3 md:px-5 lg:px-16 md:py-3 lg:py-4 my-4 md:my-5 lg:mx-2 bg-gray-800 text-sm md:text-base lg:text-lg text-white">
+    <!-- back and change flight -->
+    <div class="flex justify-between py-2 px-3 md:px-5 lg:px-16 md:py-3 lg:py-4 mt-4 md:mt-5 lg:mx-2 bg-gray-800 text-sm md:text-base lg:text-lg text-white">
       <input class="p-2 rounded-sm bg-red-600 text-white text-xs md:text-sm lg:text-base shadow hover:bg-red-700 focus:outline-none" type="submit" value="CHANGE FLIGHT">
       <span @click="$router.go(-1)" class="my-auto underline cursor-pointer">Go back</span>
     </div>
     <!-- header -->
-    <div class="bg-green-200 mx-2">
+    <div class="bg-green-200 mx-2 mt-1 md:mx-2">
       <p class="text-left pl-4 md:pl-4 lg:pl-16 uppercase font-semibold py-3 text-xs md:text-base">PASSENGER DETAILS</p>
     </div>
     <!-- form -->

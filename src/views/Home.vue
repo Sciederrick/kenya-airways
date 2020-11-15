@@ -11,24 +11,24 @@
     <!-- booking enquiry form|flights|seat selection|passenger details|extras|payment -->
     <div class="md:pt-12">
       <!-- milestone pills -->
-      <div class="md:mx-auto md:w-3/4 my-3 flex justify-evenly md:justify-start text-xs md:text-base lg:text-lg px-1 text-center">
-        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-t rounded-r rounded-b-none rounded-l-none border-red-300">
+      <div class="md:mx-auto md:w-3/4 my-3 flex justify-evenly md:justify-start text-xs md:text-base lg:text-lg px-1 text-center font-semibold">
+        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-red-300">
           <!-- <fa-icon :icon="['fas','plane']" size="1x"/> -->
           <span class="md:px-2 text-red-500 underline">enquiry</span>
         </div>
-        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-t rounded-r rounded-b-none rounded-l-none border-gray-400">
+        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-gray-400">
           <!-- <fa-icon :icon="['fas','plane']" size="1x"/> -->
           <span class="md:px-2 text-gray-500">seat</span>
         </div>
-        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-t rounded-r rounded-b-none rounded-l-none border-gray-400">
+        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-gray-400">
           <!-- <fa-icon :icon="['fas','plane']" size="1x"/> -->
           <span class="md:px-2 text-gray-500">passenger</span>
         </div>
-        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-t rounded-r rounded-b-none rounded-l-none border-gray-400">
+        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-gray-400">
           <!-- <fa-icon :icon="['fas','plane']" size="1x"/> -->
           <span class="md:px-2 text-gray-500">extras</span>
         </div>
-        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 md:border-r border-t rounded-r rounded-b-none rounded-l-none border-gray-400">
+        <div class="w-1/5 py-2 md:mr-1 lg:mr-4">
           <!-- <fa-icon :icon="['fas','plane']" size="1x"/> -->
           <span class="md:px-2 text-gray-500">payment</span>
         </div>
