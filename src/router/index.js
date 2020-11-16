@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import BookingEnquiry from '../components/BookingEnquiry.vue'
+import Payment from '../components/Payment.vue'
 
 Vue.use(VueRouter)
 
@@ -37,8 +38,14 @@ const routes = [
       },
       {
         path: '/payment',
-        name: 'Payment',
-        component: () => import(/* webpackChunkName: "payment" */ '../components/Payment.vue')
+        component: Payment,
+        children:[
+          {
+            path: '',
+            name: 'Visa',
+            component: () => import(/* webpackChunkName: "visa" */ '../components/Visa.vue')
+          }
+        ]
       }
     ]
   },

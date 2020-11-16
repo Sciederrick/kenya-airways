@@ -6,6 +6,11 @@ import '@/assets/css/styles.css'
 
 Vue.config.productionTip = false
 
+//global components
+import PaymentConfirmation from '@/components/PaymentConfirmationModal.vue'
+
+Vue.component('PaymentConfirmation', PaymentConfirmation)
+
 export const bus = new Vue()
 
 new Vue({
