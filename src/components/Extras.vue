@@ -44,50 +44,51 @@
               <!-- dog -->
               <div class="flex justify-between items-center">
                 <div class="flex justify-between items-center">
-                  <input type="checkbox" value="Dog" id="petDog"><label class="px-2 text-sm" for="petDog">Dog</label>
+                  <input @click="pet.dog=!pet.dog" type="checkbox" value="Dog" id="petDog"><label class="px-2 text-sm" for="petDog">Dog</label>
                 </div>
-                <div class="flex justify-between items-center">
+                <div :class="{'invisible':!pet.dog}" class="flex justify-between items-center">
                   <label class="px-2 text-xs text-gray-600" for="numberOfDogs">Number of dogs:</label>
-                  <input class="w-10 lg:w-16 my-1 text-center border rounded-sm border-black shadow" type="number" step="1" min="0" max="20" placeholder="0" id="numberOfDogs">
+                  <input class="w-10 lg:w-16 my-1 text-center border rounded-sm border-black shadow" type="number" step="1" min="0" max="20" value="1" id="numberOfDogs">
                 </div>
               </div>
               <!-- cat -->
               <div class="flex justify-between items-center">
                 <div class="flex justify-between items-center">
-                  <input type="checkbox" value="Cat" id="petCat"><label class="px-2 text-sm" for="petCat">Cat</label>
+                  <input @click="pet.cat=!pet.cat" type="checkbox" value="Cat" id="petCat"><label class="px-2 text-sm" for="petCat">Cat</label>
                 </div>
-                <div class="flex justify-between items-center">
+                <div :class="{'invisible':!pet.cat}" class="flex justify-between items-center">
                   <label class="px-2 text-xs text-gray-600" for="numberOfCats">Number of cats:</label>
-                  <input class="w-10 lg:w-16 my-1 text-center border rounded-sm border-black shadow" type="number" step="1" min="0" max="20" placeholder="0" id="numberOfCats">
+                  <input class="w-10 lg:w-16 my-1 text-center border rounded-sm border-black shadow" type="number" step="1" min="0" max="20" value="1" id="numberOfCats">
                 </div>
               </div>
               <!-- snake -->
               <div class="flex justify-between items-center">
                 <div class="flex justify-between items-center">
-                  <input type="checkbox" value="Snake" id="petSnake"><label class="px-2 text-sm" for="petSnake">Snake</label>
+                  <input @click="pet.snake=!pet.snake" type="checkbox" value="Snake" id="petSnake"><label class="px-2 text-sm" for="petSnake">Snake</label>
                 </div>
-                <div class="flex justify-between items-center">
+                <div :class="{'invisible':!pet.snake}" class="flex justify-between items-center">
                   <label class="px-2 text-xs text-gray-600" for="numberOfSnakes">Number of snakes:</label>
-                  <input class="w-10 lg:w-16 my-1 text-center border rounded-sm border-black shadow" type="number" step="1" min="0" max="20" placeholder="0" id="numberOfSnakes">
+                  <input class="w-10 lg:w-16 my-1 text-center border rounded-sm border-black shadow" type="number" step="1" min="0" max="20" value="1" id="numberOfSnakes">
                 </div>
               </div>
               <!-- spider -->
               <div class="flex justify-between items-center">
                 <div class="flex justify-between items-center">
-                  <input type="checkbox" value="Spider" id="petSpider"><label class="px-2 text-sm" for="petSpider">Spider</label>
+                  <input @click="pet.spider=!pet.spider" type="checkbox" value="Spider" id="petSpider"><label class="px-2 text-sm" for="petSpider">Spider</label>
                 </div>
-                <div class="flex justify-between items-center">
+                <div :class="{'invisible':!pet.spider}" class="flex justify-between items-center">
                   <label class="px-2 text-xs text-gray-600" for="numberOfSpiders">Number of spiders:</label>
-                  <input class="w-10 lg:w-16 pl-2 my-1 text-center border rounded-sm border-black shadow" type="number" step="1" min="0" max="20" placeholder="0" id="numberOfSpiders">
+                  <input class="w-10 lg:w-16 pl-2 my-1 text-center border rounded-sm border-black shadow" type="number" step="1" min="0" max="20" value="1" id="numberOfSpiders">
                 </div>
               </div>
+              <!-- monkey -->
               <div class="flex justify-between items-center">
                 <div class="flex justify-between items-center">
-                  <input type="checkbox" value="Monkey" id="petMonkey"><label class="px-2 text-sm" for="petMonkey">Monkey</label>
+                  <input @click="pet.monkey=!pet.monkey" type="checkbox" value="Monkey" id="petMonkey"><label class="px-2 text-sm" for="petMonkey">Monkey</label>
                 </div>
-                <div class="flex justify-between items-center">
+                <div :class="{'invisible':!pet.monkey}" class="flex justify-between items-center">
                   <label class="px-2 text-xs text-gray-600" for="numberOfMonkeys">Number of monkeys:</label>
-                  <input class="w-10 lg:w-16 pl-2 my-1 text-center border rounded-sm border-black shadow" type="number" step="1" min="0" max="20" placeholder="0" id="numberOfMonkeys">
+                  <input class="w-10 lg:w-16 pl-2 my-1 text-center border rounded-sm border-black shadow" type="number" step="1" min="0" max="20" value="1" id="numberOfMonkeys">
                 </div>
               </div>
             </div>
@@ -112,6 +113,17 @@
 
 <script>
 export default{
-  name: 'Extras'
+  name: 'Extras',
+  data(){
+    return{
+      pet:{
+        dog:false,
+        cat:false,
+        snake:false,
+        spider:false,
+        monkey:false
+      }
+    }
+  }
 }
 </script>

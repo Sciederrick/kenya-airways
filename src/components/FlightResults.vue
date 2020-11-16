@@ -24,9 +24,9 @@
       </div>
     </div>
     <!-- results -->
-    <div class="w-full mx-auto md:mx-2 lg:mx-24">
+    <div class="w-full mx-auto">
       <p class="hidden md:block text-sm text-red-600 text-left pt-10 pl-10">Choose from below...</p>
-      <div class="flex flex-wrap justify-center md:justify-start lg:pt-8">
+      <div class="flex flex-col flex-wrap justify-center lg:pt-8 lg:mx-32">
         <table class="w-full md:w-auto table-fixed my-4 lg:m-6 mx-auto text-xs lg:text-base shadow-lg lg:shadow-xl cursor-pointer">
           <tr>
             <td colspan="3"><hr/></td>
@@ -100,7 +100,6 @@
           </tr>
         </table>
       </div>
-
     </div>
   </div>
 </template>

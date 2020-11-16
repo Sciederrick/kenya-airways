@@ -25,10 +25,10 @@
           </select>
         </div>
         <div class="w-full md:w-1/3 border rounded mx-2 my-1 border-black shadow-sm p-2 lg:py-3">
-          <input class="w-full text-sm pl-10 focus:outline-none" type="text" placeholder="FIRST NAME">
+          <input class="w-full text-sm md:text-base lg:text-lg uppercase pl-10 focus:outline-none" type="text" placeholder="FIRST NAME">
         </div>
         <div class="w-full md:w-1/3 border rounded mx-2 my-1 border-black shadow-sm p-2 lg:py-3">
-          <input class="w-full text-sm pl-10 focus:outline-none" type="text" placeholder="LAST NAME">
+          <input class="w-full text-sm md:text-base lg:text-lg uppercase pl-10 focus:outline-none" type="text" placeholder="LAST NAME">
         </div>
       </div>
       <!-- date of birth -->
@@ -48,14 +48,14 @@
         <div>
           <fa-icon class="self-center mx-2" :icon="['fas', 'phone-alt']" size="1x"/>
         </div>
-        <input class="w-full pl-10 text-sm focus:outline-none" type="tel" placeholder="PHONE NUMBER">
+        <input class="w-full pl-10 text-sm md:text-base lg:text-lg focus:outline-none" type="tel" placeholder="PHONE NUMBER">
       </div>
       <!-- email -->
       <div class="flex md:w-2/3 lg:w-1/2 border rounded mx-2 my-4 md:my-10 border-black shadow-sm p-2 lg:py-3">
         <div>
           <fa-icon class="self-center mx-2" :icon="['far', 'envelope']" size="1x"/>
         </div>
-        <input class="w-full pl-10 text-sm focus:outline-none" type="email" placeholder="EMAIL ADDRESS">
+        <input class="w-full pl-10 text-sm md:text-base lg:text-lg focus:outline-none" type="email" placeholder="EMAIL ADDRESS">
       </div>
       <!-- infant -->
       <div class="flex ml-2">
