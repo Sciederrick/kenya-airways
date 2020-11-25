@@ -6,7 +6,7 @@
       <span @click="$router.go(-1)" class="underline cursor-pointer">Go back</span>
     </div>
     <!-- header -->
-    <div class="mx-1 md:mx-2 lg:mx-20 lg:my-20 flex flex-row justify-between md:justify-around items-center p-2">
+    <div v-if="availableFlights.length!=0" class="mx-1 md:mx-2 lg:mx-20 lg:my-20 flex flex-row justify-between md:justify-around items-center p-2">
       <div class="w-40 h-32 md:w-48 md:h-40 lg:w-64 lg:h-56 bg-gray-700 flex flex-col justify-end rounded-sm">
         <div class="bg-red-600">
           <p class="text-white text-sm lg:text-lg p-1">{{$route.params.depatureCity}}</p>
