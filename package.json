@@ -15,7 +15,8 @@
     "core-js": "^3.6.5",
     "tailwindcss": "^1.9.6",
     "vue": "^2.6.11",
-    "vue-router": "^3.2.0"
+    "vue-router": "^3.2.0",
+    "vuejs-datepicker": "^1.6.2"
   },
   "devDependencies": {
     "@iconify/vue": "^1.0.6",

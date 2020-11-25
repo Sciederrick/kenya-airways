@@ -4,7 +4,6 @@
     <nav class="fixed top-0 inset-x-0 flex flex-row justify-between items-center bg-white px-4 py-2 z-40" id="nav">
       <div class="h-12 md:h-20 pt-3">
         <img class="hidden md:block h-full w-full object-cover" :src="require('@/assets/logo.jpeg')" alt="kenya airways logo">
-        <!-- <img class="md:hidden h-full w-full object-cover" :src="require('@/assets/logo2.jpeg')" alt="kenya airways logo"> -->
         <p class="md:hidden"><span class="text-red-700">KQ</span>&nbsp;logo</p>
         <!-- logo -->
       </div>
@@ -12,9 +11,9 @@
         <fa-icon :icon="['fas', 'bars']" size="2x"/>
       </button>
       <ul class="hidden md:block">
-        <li class="inline md:px-3 lg:px-6"><router-link :to="{name:'Home'}">Home</router-link></li>
-        <li class="inline md:px-3 lg:px-6"><router-link :to="{name:'ContactUs'}">Contact&nbsp;Us</router-link></li>
-        <li class="inline md:px-3 lg:px-6"><router-link :to="{name:'AboutUs'}">About&nbsp;Us</router-link></li>
+        <li class="inline md:px-3 lg:px-6"><router-link :to="{name:'Home'}"><fa-icon class="mx-2 hidden md:inline" :icon="['fas','home']" size="1x"/>Home</router-link></li>
+        <li class="inline md:px-3 lg:px-6"><router-link :to="{name:'ContactUs'}"><fa-icon class="mx-2 hidden md:inline" :icon="['fas','tty']" size="1x"/>Contact&nbsp;Us</router-link></li>
+        <li class="inline md:px-3 lg:px-6"><router-link :to="{name:'AboutUs'}"><fa-icon class="mx-2 hidden md:inline" :icon="['fas','info']" size="1x"/>About&nbsp;Us</router-link></li>
       </ul>
     </nav>
     <!-- mobile navbar -->

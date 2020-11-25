@@ -3,7 +3,7 @@
     <!-- jumbotron -->
     <div v-if="minimalInterface" id="jumbotron" class="h-1/2 md:h-screen w-screen relative">
       <img class="w-full h-full object-cover" :src="require('@/assets/images/Kenya-Airways-787-1536x1229.jpg')" alt="KQ aircraft image" >
-      <div id="jumbotronOverlay" class="absolute inset-0 h-1/2 md:h-screen w-screen bg-pink-900 opacity-50"></div>
+      <div id="jumbotronOverlay" class="absolute inset-0 h-1/2 md:h-screen w-screen bg-black opacity-50"></div>
       <router-link :to="{ name:'Home', hash:'#bookingEnquiry' }">
         <input @click="displayButton=true" :class="{'md:hidden':displayButton}" class="hidden md:block md:absolute md:bottom-0 md:inset-x-0 md:mb-20 md:z-20 md:p-3 md:bg-red-700 md:text-white md:mx-auto md:border md:border-red-700 md:rounded md:shadow-2xl hover:bg-black hover:border-black focus:outline-none" type="submit" name="book" value="BOOK NOW">
       </router-link>
