@@ -62,8 +62,8 @@
           </tr>
           <tr>
             <td class="border-4 border-white w-1/3 p-2 bg-gray-300 text-red-600">STOP(S)</td>
-            <td class="border-4 border-white w-1/3 p-2 bg-gray-300">{{flight.stops}}</td>
-            <td class="border-4 border-white w-1/3 p-2 bg-gray-300"__ HOURS</td>
+            <td class="border-4 border-white w-1/3 p-2 bg-gray-300">{{flight.stops == null ? 'None':flight.stops}}</td>
+            <td class="border-4 border-white w-1/3 p-2 bg-gray-300">__ HOURS</td>
           </tr>
           <tr>
             <td class="border-4 border-white p-2 bg-gray-300" colspan="3">{{flight.plane}}</td>

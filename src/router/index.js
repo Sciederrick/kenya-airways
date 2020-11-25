@@ -72,7 +72,10 @@ const router = new VueRouter({
         position.selector = to.hash
         if(to.hash === '#bookingEnquiry'){
           position.offset = {y:95}
+        }else if(to.hash === '#flightResults'){
+          position.offset = {y:220}
         }
+
         if(document.querySelector(to.hash)){
           return position
         }

@@ -40,7 +40,7 @@
         </datepicker>
       </div>
       <div class="md:mx-auto md:w-2/3 lg:w-3/4 p-2 md:p-0">
-        <router-link :to="{name:'FlightResults', params:{depatureCity:enquiry.depatureCity.split(',')[0], arrivalCity:enquiry.arrivalCity.split(',')[0], datetime:enquiry.date}}">
+        <router-link :to="{name:'FlightResults', params:{depatureCity:enquiry.depatureCity.split(',')[0], arrivalCity:enquiry.arrivalCity.split(',')[0], datetime:enquiry.date}, hash:'#flightResults'}">
           <input class="w-full p-2 lg:py-4 mx-auto bg-green-700 text-white text-sm hover:bg-red-700 cursor-pointer focus:outline-none" type="submit" name="submit" value="SEARCH FLIGHT">
         </router-link>
       </div>
