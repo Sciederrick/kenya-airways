@@ -2,14 +2,14 @@
   <div id="flightResults">
     <!-- results nav -->
     <div id="resultsNav" class="flex justify-between py-2 px-3 md:px-5 lg:px-16 md:py-3 lg:py-4 my-4 md:my-5 lg:mx-2 bg-gray-800 text-sm md:text-base lg:text-lg text-white">
-      <span class="text-xs md:text-sm">{{availableFlights.length}} result(s) for : {{new Date($route.params.datetime).getDay()}}, {{ months[new Date($route.params.datetime).getMonth()]}} {{ new Date($route.params.datetime).getFullYear()}}</span>
+      <span class="text-xs md:text-sm">{{availableFlights.length}} result(s) for : {{new Date($route.params.datetime||datetime).getDay()}}, {{ months[new Date($route.params.datetime||datetime).getMonth()]}} {{ new Date($route.params.datetime||datetime).getFullYear()}}</span>
       <span @click="$router.go(-1)" class="underline cursor-pointer">Go back</span>
     </div>
     <!-- header -->
     <div v-if="availableFlights.length!=0" class="mx-1 md:mx-2 lg:mx-20 lg:my-20 flex flex-row justify-between md:justify-around items-center p-2">
       <div class="w-40 h-32 md:w-48 md:h-40 lg:w-64 lg:h-56 bg-gray-700 flex flex-col justify-end rounded-sm">
         <div class="bg-red-600">
-          <p class="text-white text-sm lg:text-lg p-1">{{$route.params.depatureCity}}</p>
+          <p class="text-white text-sm lg:text-lg p-1">{{$route.params.depatureCity||depatureCity}}</p>
         </div>
       </div>
       <div class="w-24 h-32 md:w-32 md:h-32 bg-white flex justify-center items-center">
@@ -19,7 +19,7 @@
       <div class="w-40 h-32 md:w-48 md:h-40 lg:w-64 lg:h-56 bg-gray-700 flex flex-col justify-end rounded-sm relative">
         <span class="absolute top-0 right-0 m-2 text-xs md:text-sm bg-white text-gray-800 rounded p-1 font-semibold">70,000 KES</span>
         <div class="bg-red-600">
-          <p class="text-white text-sm lg:text-lg p-1">{{$route.params.arrivalCity}}</p>
+          <p class="text-white text-sm lg:text-lg p-1">{{$route.params.arrivalCity||arrivalCity}}</p>
         </div>
       </div>
     </div>
@@ -27,7 +27,7 @@
     <div class="w-full mx-auto">
       <!-- if there is no result display 👇 alert... -->
       <div class="flex justify-center content-center mx-1 pt-2 md:pt-10 lg:pt-0">
-        <div v-if="availableFlights.length==0" class="alert flex flex-row items-center bg-yellow-200 p-5 rounded border-b-2 border-yellow-300">
+        <div v-if="availableFlights.length=='undefined'||availableFlights.length==0" class="alert flex flex-row items-center bg-yellow-200 p-5 rounded border-b-2 border-yellow-300">
           <div class="alert-icon flex items-center bg-yellow-100 border-2 border-yellow-500 justify-center h-10 md:h-16 w-10 md:w-16 flex-shrink-0 rounded-full">
             <span class="text-yellow-500">
               <svg fill="currentColor"
@@ -49,16 +49,16 @@
         </div>
       </div>
       </div>
-      <!-- alert message👆 -->
+      <!-- results content -->
       <div class="flex flex-col flex-wrap justify-center lg:pt-8 mx-2 md:mx-4 lg:mx-32 xl:w-3/4 xl:mx-auto">
-        <table class="w-full lg:w-auto table-fixed my-4 lg:m-6 mx-auto text-xs lg:text-base shadow-lg lg:shadow-xl cursor-pointer" v-for="flight in availableFlights" :key="flight.id">
+        <table class="w-full lg:w-auto table-fixed my-4 lg:m-6 mx-auto text-xs lg:text-base shadow-lg lg:shadow-xl cursor-pointer" v-for="flight in availableFlights" :key="flight.id" :id="flight.id" @click.prevent="seatSelection(flight.id)">
           <tr>
             <td colspan="3"><hr/></td>
           </tr>
           <tr class="m-1">
-            <td class="border-4 border-white w-1/3 p-2 bg-gray-300 font-semibold">TAKE OF AT {{flight.depature}} HRS</td>
+            <td class="border-4 border-white w-1/3 p-2 bg-gray-300 font-semibold">TAKE OFF AT {{flight.depature}} HRS</td>
             <td class="w-1/3 py-2"><fa-icon class="text-gray-200" :icon="['far', 'clock']" size="2x"/></td>
-            <td class="border-4 border-white w-1/3 p-2 bg-gray-300 font-semibold">{{new Date($route.params.datetime).getDay()+1}}, {{ months[new Date($route.params.datetime).getMonth()]}} {{ new Date($route.params.datetime).getFullYear()}} AT {{flight.arrival}} HRS</td>
+            <td class="border-4 border-white w-1/3 p-2 bg-gray-300 font-semibold">{{new Date($route.params.datetime||datetime).getDay()+1}}, {{ months[new Date($route.params.datetime||datetime).getMonth()]}} {{ new Date($route.params.datetime||datetime).getFullYear()}} AT {{flight.arrival}} HRS</td>
           </tr>
           <tr>
             <td class="border-4 border-white w-1/3 p-2 bg-gray-300 text-red-600">STOP(S)</td>
@@ -75,23 +75,38 @@
 </template>
 
 <script>
-import availableFlights from '@/available-flights'
+import flightsData from '@/available-flights'
 export default {
   name:'FlightResults',
   data(){
     return{
-      // availableFlights:availableFlights.flights,
-      months:["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+      months:["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      depatureCity:localStorage.getItem('depatureCity'),
+      arrivalCity:localStorage.getItem('arrivalCity'),
+      datetime:localStorage.getItem('datetime')
     }
   },
   computed:{
     availableFlights(){
-      return availableFlights.flights.filter(fl=>{
-        let regex = new RegExp(this.$route.params.depatureCity, 'gi')
-        let regex2 = new RegExp(this.$route.params.arrivalCity, 'gi')
-        return fl.depatureCity.match(regex)&&fl.arrivalCity.match(regex2)
-      })
+      if(this.$route.params.depatureCity||this.depatureCity && this.$route.params.arrivalCity||this.arrivalCity){
+        return flightsData.flights.filter(fl=>{
+          let regex = new RegExp(this.$route.params.depatureCity||this.depatureCity, 'gi')
+          let regex2 = new RegExp(this.$route.params.arrivalCity||this.arrivalCity, 'gi')
+          return fl.depatureCity.match(regex)&&fl.arrivalCity.match(regex2)
+        })
+      }
     }
+  },
+  methods:{
+    seatSelection(id){
+      localStorage.setItem('flightID', id)
+      this.$router.push({ name: 'Seats', hash: '#seats'})
+    }
+  },
+  created(){
+    localStorage.setItem('depatureCity', this.$route.params.depatureCity)
+    localStorage.setItem('arrivalCity', this.$route.params.arrivalCity)
+    localStorage.setItem('datetime', this.$route.params.datetime)
   }
 }
 </script>
