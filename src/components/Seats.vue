@@ -4,7 +4,7 @@
     <div id="resultsNav" class="flex justify-between py-1 px-3 md:px-5 lg:px-16 md:py-2 lg:py-3 mt-4 md:mt-5 lg:mx-2 bg-gray-800 text-sm md:text-base lg:text-lg text-white">
       <input class="p-2 rounded-sm bg-red-600 text-white text-xs md:text-sm lg:text-base shadow hover:bg-red-700 focus:outline-none" type="submit" value="CHANGE FLIGHT">
       <router-link :to="{name:'PassengerDetails', hash:'#passengerDetails'}">
-        <span class="my-auto underline cursor-pointer">Next Step</span>
+        <span class="my-auto underline cursor-pointer uppercase font-semibold">proceed<fa-icon class="ml-1 text-lg self-center mt-1" :icon="['fas', 'angle-double-right']" size="1x"/></span>
       </router-link>
     </div>
     <!-- header -->
@@ -65,6 +65,7 @@
 </template>
 
 <script>
+import {bus} from '@/main'
 export default{
   name:'Seats',
   data(){
@@ -73,11 +74,17 @@ export default{
     }
   },
   methods:{
+    activeComponent(){
+      bus.$emit('activeComponent', 'Seat')
+    },
     bookedSeat(id, column){
       event.target.style.backgroundColor = "green"
       this.seatID.push(column.concat(id))
       localStorage.setItem('seatID', JSON.stringify(this.seatID))
     }
+  },
+  created(){
+    this.activeComponent()
   }
 }
 </script>

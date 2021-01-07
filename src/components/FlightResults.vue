@@ -3,7 +3,7 @@
     <!-- results nav -->
     <div id="resultsNav" class="flex justify-between py-2 px-3 md:px-5 lg:px-16 md:py-3 lg:py-4 my-4 md:my-5 lg:mx-2 bg-gray-800 text-sm md:text-base lg:text-lg text-white">
       <span class="text-xs md:text-sm">{{availableFlights.length}} result(s) for : {{new Date($route.params.datetime||datetime).getDay()}}, {{ months[new Date($route.params.datetime||datetime).getMonth()]}} {{ new Date($route.params.datetime||datetime).getFullYear()}}</span>
-      <span @click="$router.go(-1)" class="underline cursor-pointer">Go back</span>
+      <span @click="$router.go(-1)" class="underline cursor-pointer uppercase"><fa-icon class="mr-1 text-lg self-center mt-1" :icon="['fas', 'angle-double-left']" size="1x"/>Go back</span>
     </div>
     <!-- header -->
     <div v-if="availableFlights.length!=0" class="mx-1 md:mx-2 lg:mx-20 lg:my-20 flex flex-row justify-between md:justify-around items-center p-2">
@@ -76,6 +76,7 @@
 
 <script>
 import flightsData from '@/available-flights'
+import {bus} from '@/main'
 export default {
   name:'FlightResults',
   data(){
@@ -98,12 +99,16 @@ export default {
     }
   },
   methods:{
+    activeComponent(){
+      bus.$emit('activeComponent', 'BookingEnquiry')
+    },
     seatSelection(id){
       localStorage.setItem('flightID', id)
       this.$router.push({ name: 'Seats', hash: '#seats'})
     }
   },
   created(){
+    this.activeComponent()
     localStorage.setItem('depatureCity', this.$route.params.depatureCity)
     localStorage.setItem('arrivalCity', this.$route.params.arrivalCity)
     localStorage.setItem('datetime', this.$route.params.datetime)

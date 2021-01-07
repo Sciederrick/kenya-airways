@@ -12,7 +12,7 @@
         <!-- modal body -->
           <div class="h-24 flex justify-evenly items-start border-b border-white relative">
             <div class="w-1/2 lg:w-1/3 px-3 z-20">
-              <button class="w-full border border-green-600 rounded-sm py-2 text-center bg-green-600 text-white shadow hover:bg-green-800 hover:border-green-800 focus:outline-none">YES</button>
+              <button @click.prevent="pay()" class="w-full border border-green-600 rounded-sm py-2 text-center bg-green-600 text-white shadow hover:bg-green-800 hover:border-green-800 focus:outline-none">YES</button>
             </div>
             <div class="w-1/2 lg:w-1/3 px-3 z-20">
               <button @click.prevent="closeModal()" class="w-full border border-red-600 rounded-sm py-2 text-center bg-red-600 text-white shadow hover:bg-red-800 hover:border-red-800 focus:outline-none">NO</button>
@@ -36,6 +36,9 @@ export default{
   methods:{
     closeModal(){
       bus.$emit('closePaymentConfirmationModal', false)
+    },
+    pay(){
+      //@TODO:Thank you message for successful payment, print e-ticket and report
     }
   }
 }

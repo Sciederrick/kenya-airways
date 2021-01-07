@@ -12,29 +12,24 @@
     <div class="md:pt-12">
       <!-- milestone pills -->
       <div class="md:mx-auto md:w-3/4 my-3 flex justify-evenly md:justify-start text-xs md:text-base lg:text-lg px-1 text-center font-semibold">
-        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-red-300">
-          <!-- <fa-icon :icon="['fas','plane']" size="1x"/> -->
-          <span class="md:px-2 text-red-500 underline">enquiry</span>
+        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-gray-400" :class="{'border-red-300':bookingProgress.BookingEnquiry}">
+          <span class="md:px-2 text-gray-500" :class="{'text-red-500': bookingProgress.BookingEnquiry, underline: bookingProgress.BookingEnquiry}">enquiry</span>
         </div>
-        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-gray-400">
-          <!-- <fa-icon :icon="['fas','plane']" size="1x"/> -->
-          <span class="md:px-2 text-gray-500">seat</span>
+        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-gray-400" :class="{'border-red-300':bookingProgress.Seat}">
+          <span class="md:px-2 text-gray-500" :class="{'text-red-500':bookingProgress.Seat, underline:bookingProgress.Seat}">seat</span>
         </div>
-        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-gray-400">
-          <!-- <fa-icon :icon="['fas','plane']" size="1x"/> -->
-          <span class="md:px-2 text-gray-500">passenger</span>
+        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-gray-400" :class="{'border-red-300':bookingProgress.PassengerDetails}">
+          <span class="md:px-2 text-gray-500" :class="{'text-red-500':bookingProgress.PassengerDetails, underline:bookingProgress.PassengerDetails}">passenger</span>
         </div>
-        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-gray-400">
-          <!-- <fa-icon :icon="['fas','plane']" size="1x"/> -->
-          <span class="md:px-2 text-gray-500">extras</span>
+        <div class="w-1/5 py-2 md:mr-1 lg:mr-4 border-r border-gray-400" :class="{'border-red-300':bookingProgress.Extras}">
+          <span class="md:px-2 text-gray-500" :class="{'text-red-500':bookingProgress.Extras, underline:bookingProgress.Extras}">extras</span>
         </div>
         <div class="w-1/5 py-2 md:mr-1 lg:mr-4">
-          <!-- <fa-icon :icon="['fas','plane']" size="1x"/> -->
-          <span class="md:px-2 text-gray-500">payment</span>
+          <span class="md:px-2 text-gray-500" :class="{'text-red-500':bookingProgress.Payment, underline:bookingProgress.Payment}">payment</span>
         </div>
       </div>
       <div class="w-full">
-        <p class="pt-4 pb-2 md:pt-6 md:pb-4 text-sm">Step <span class="text-red-600">1</span> of 6</p>
+        <p class="pt-4 pb-2 md:pt-6 md:pb-4 text-sm">Step <span class="text-red-600 text-base font-semibold">{{currentPage}}</span> of 5</p>
       </div>
       <!-- booking enquiry form -->
       <router-view :key="$route.path"></router-view>
@@ -114,8 +109,42 @@ export default {
   data(){
     return {
       displayButton:false,
-      minimalInterface:true  /*Implementing Constraints to improve booking experience*/
+      minimalInterface:true,  /* Implementing Constraints to improve booking experience */
+      bookingProgress:{
+        BookingEnquiry: false,
+        Seat: false,
+        PassengerDetails: false,
+        Extras: false,
+        Payment: false
+      },
+      currentPage: 1,
     }
+  },
+  methods:{
+    activeComponent(){
+      bus.$on('activeComponent', (currentComponent) => {
+        this.bookingProgress[currentComponent] = true
+        switch(currentComponent){
+          case 'BookingEnquiry':
+            this.currentPage = 1
+            break
+          case 'Seat':
+            this.currentPage = 2
+            break
+          case 'PassengerDetails':
+            this.currentPage = 3
+            break
+          case 'Extras':
+            this.currentPage = 4
+            break
+          case 'Payment':
+            this.currentPage = 5
+        }
+      })
+    }
+  },
+  created(){
+    this.activeComponent()
   }
 }
 </script>

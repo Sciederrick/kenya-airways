@@ -51,6 +51,7 @@
 <script>
 import Datepicker from 'vuejs-datepicker'
 import countriesCities from '@/countries-cities.js'
+import {bus} from '@/main'
 export default {
   name: 'BookingEnquiry',
   components: {
@@ -98,9 +99,15 @@ export default {
     },
     insertCityInTheInputField2(e){
       this.enquiry.arrivalCity = e.target.innerText
-    }
+    },
+    activeComponent(){
+      bus.$emit('activeComponent', 'BookingEnquiry')
+    },
   },
   created(){
+    //  Indicate that we're on Booking Enquiry Page
+    this.activeComponent()
+    //  Populate menu suggestions with destinations
     this.destinations.forEach(el=>{
       this.cities.push(`${el.city}, ${el.country}`)
     })
