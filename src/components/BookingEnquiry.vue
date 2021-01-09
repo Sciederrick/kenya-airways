@@ -1,10 +1,6 @@
 <template>
   <div id="bookingEnquiry">
     <form class="py-2">
-      <div v-if="false" class="md:mx-auto md:w-2/3 lg:w-3/4 text-right">
-        <fa-icon :icon="['fas','redo-alt']" size="1x" color="maroon"/>
-        <input class="p-2 lg:py-4 bg-transparent text-red-700" type="reset" value="reset fields">
-      </div>
       <div class="flex md:mx-auto md:w-2/3 lg:w-3/4 border mx-2 my-4 md:my-10 border-black shadow p-1 relative">
         <div class="md:py-2">
           <label class="text-sm" for="from">FROM:</label>
@@ -62,9 +58,9 @@ export default {
       destinations:[...countriesCities.destinations],
       cities:[],
       enquiry:{
-        depatureCity:localStorage.getItem('depatureCity')||'',
-        arrivalCity:localStorage.getItem('arrivalCity')||'',
-        date:localStorage.getItem('datetime')||''
+        depatureCity: '',
+        arrivalCity: '',
+        date: ''
       },
       datepicker:{
         disabledDates:{
@@ -103,10 +99,23 @@ export default {
     activeComponent(){
       bus.$emit('activeComponent', 'BookingEnquiry')
     },
+    previousValues(){
+      if(localStorage.getItem('depatureCity')){
+        this.depatureCity = localStorage.getItem('depatureCity')
+      }
+      if(localStorage.getItem('arrivalCity')){
+        this.arrivalCity = localStorage.getItem('arrivalCity')
+      }
+      if(localStorage.getItem('datetime')){
+        this.date = localStorage.getItem('datetime')
+      }
+    }
   },
   created(){
     //  Indicate that we're on Booking Enquiry Page
     this.activeComponent()
+    //  Insert previous values to input fields
+    this.previousValues()
     //  Populate menu suggestions with destinations
     this.destinations.forEach(el=>{
       this.cities.push(`${el.city}, ${el.country}`)

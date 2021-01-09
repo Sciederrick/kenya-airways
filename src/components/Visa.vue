@@ -63,14 +63,16 @@
       <div class="w-full md:w-1/3 border rounded my-3 border-black shadow p-2 lg:py-3">
         <input v-model="paymentDetails.city" class="w-full text-sm pl-10 focus:outline-none" type="text" placeholder="CITY *">
       </div>
-      <!-- zip/postal code -->
-      <div class="w-full md:w-1/3 border rounded my-3 border-black shadow p-2 lg:py-3">
-        <input v-model="paymentDetails.zipCode" class="w-full text-sm pl-10 focus:outline-none" type="text" placeholder="ZIP/POSTAL CODE *">
+      <div class="flex flex-wrap justify-start">
+        <!-- zip/postal code -->
+        <div class="w-full md:w-1/3 border rounded my-3 border-black shadow p-2 lg:py-3">
+          <input v-model="paymentDetails.zipCode" class="w-full text-sm pl-10 focus:outline-none" type="text" placeholder="ZIP/POSTAL CODE *">
+        </div>
+        <!-- submit button -->
+        <div class="w-full md:w-auto p-2 lg:py-3 md:ml-20 md:flex justify-center">
+          <input @click.prevent="payWithVisa()" class="w-full md:w-auto p-2 md:p-3 md:px-10 rounded-sm bg-green-600 text-white text-sm shadow cursor-pointer hover:bg-green-700 focus:outline-none" type="submit" value="PAY 217,000 KES">
+        </div>
       </div>
-      <!-- submit button -->
-      <!-- <div class="py-4 md:py-10 md:flex justify-center">
-        <input @click.prevent="payWithVisa()" class="w-full md:w-auto p-2 md:p-3 md:px-10 rounded-sm bg-green-600 text-white text-sm shadow cursor-pointer hover:bg-green-700 focus:outline-none" type="submit" value="PAY 217,000 KES">
-      </div> -->
     </form>
     <!-- payment confirmation modal -->
     <PaymentConfirmation v-if="paymentConfirmationModal"/>

@@ -2,8 +2,10 @@
   <div id="payment">
     <!-- almost done message -->
     <div class="flex justify-between py-2 px-3 md:px-5 lg:px-16 md:py-3 lg:py-4 mt-4 md:mt-5 lg:mx-2 bg-gray-800 text-sm md:text-base lg:text-lg text-white">
-      <input class="p-2 rounded-sm bg-red-600 text-white text-xs lg:text-sm shadow hover:bg-red-700 focus:outline-none" type="submit" value="CHANGE PASSENGER DETAILS">
-      <input @click.prevent="payWithVisa()" class="md:w-auto p-2 md:p-3 md:px-10 rounded-sm border border-gray-500 bg-green-500 text-white text-sm shadow cursor-pointer hover:bg-green-700 focus:outline-none" type="submit" value="PAY 217,000 KES">
+      <router-link :to="{name:'Extras', hash:'#extras'}" class="self-center">
+        <span class="my-auto underline cursor-pointer uppercase font-semibold"><fa-icon class="mr-1 text-lg self-center" :icon="['fas', 'angle-double-left']" size="1x"/>extras</span>
+      </router-link>
+      <span class="my-auto uppercase font-semibold">Almost There!</span>
     </div>
     <!-- header -->
     <div class="flex justify-between px-2 md:px-4 lg:px-16 bg-green-300 md:mx-2 py-2 my-1 text-xs lg:text-base">

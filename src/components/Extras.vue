@@ -2,7 +2,9 @@
   <div id="extras">
     <!-- change passenger details and almost done message -->
     <div class="flex justify-between py-2 px-3 md:px-5 lg:px-16 md:py-3 lg:py-4 mt-4 md:mt-5 lg:mx-2 bg-gray-800 text-sm md:text-base lg:text-lg text-white">
-      <input class="p-2 rounded-sm bg-red-600 text-white text-xs lg:text-sm shadow hover:bg-red-700 focus:outline-none" type="submit" value="CHANGE PASSENGER DETAILS">
+      <router-link :to="{name:'PassengerDetails', hash:'#passengerDetails'}">
+        <span class="my-auto underline cursor-pointer uppercase font-semibold"><fa-icon class="mr-1 text-lg self-center mt-1" :icon="['fas', 'angle-double-left']" size="1x"/>passenger details</span>
+      </router-link>
       <span @click.prevent="persistExtras()" class="my-auto underline cursor-pointer font-semibold uppercase">pay<fa-icon class="ml-1 text-lg self-center mt-1" :icon="['fas', 'angle-double-right']" size="1x"/></span>
     </div>
     <!-- header -->
@@ -131,7 +133,6 @@ export default{
         Object.keys(obj)
               .filter( key => predicate(obj[key]) )
               .reduce( (res, key) => (res[key] = obj[key], res), {} )
-
       let filtered = Object.filter(this.pet, pet => pet.show !== false)
       let extras = {numberOfBags:this.numberOfBags, pet:{name:Object.keys(filtered)[0], number:filtered[Object.keys(filtered)].count}}
       //  store extras in local storage

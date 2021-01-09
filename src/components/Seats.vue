@@ -2,7 +2,9 @@
   <div id="seats">
     <!-- change flight & go back -->
     <div id="resultsNav" class="flex justify-between py-1 px-3 md:px-5 lg:px-16 md:py-2 lg:py-3 mt-4 md:mt-5 lg:mx-2 bg-gray-800 text-sm md:text-base lg:text-lg text-white">
-      <input class="p-2 rounded-sm bg-red-600 text-white text-xs md:text-sm lg:text-base shadow hover:bg-red-700 focus:outline-none" type="submit" value="CHANGE FLIGHT">
+      <router-link :to="{name:'FlightResults', hash:'#flightResults'}">
+        <span class="my-auto underline cursor-pointer uppercase font-semibold"><fa-icon class="mr-1 text-lg self-center mt-1" :icon="['fas', 'angle-double-left']" size="1x"/>change flight</span>
+      </router-link>
       <router-link :to="{name:'PassengerDetails', hash:'#passengerDetails'}">
         <span class="my-auto underline cursor-pointer uppercase font-semibold">proceed<fa-icon class="ml-1 text-lg self-center mt-1" :icon="['fas', 'angle-double-right']" size="1x"/></span>
       </router-link>
@@ -49,14 +51,14 @@
         </div>
         <!-- first column -->
         <div class="row-width py-6 md:mx-10 z-20">
-          <div @click.once.prevent="bookedSeat(index, 'A')" class="inline-block bg-black h-6 w-6 z-20 m-2 cursor-pointer text-xs text-gray-400 py-1" v-for="(i,index) in 30" :key="i" :id="'A'+index">
+          <div @click.prevent="bookedSeat(index, 'A')" class="inline-block bg-black h-6 w-6 z-20 m-2 cursor-pointer text-xs text-gray-400 py-1" v-for="(i,index) in 30" :key="i" :id="'A'+index">
           </div>
         </div>
         <!-- run way -->
         <div class="w-16 my-8 bg-red-400 z-20 bg-opacity-75"></div>
         <!-- last row -->
         <div class="row-width py-6 md:mx-10 z-20">
-          <div @click.once.prevent="bookedSeat(index, 'B')" class="inline-block bg-black h-6 w-6 z-20 m-2 cursor-pointer text-xs text-gray-400 py-1" v-for="(i, index) in 30" :key="i" :id="'B'+index">
+          <div @click.prevent="bookedSeat(index, 'B')" class="inline-block bg-black h-6 w-6 z-20 m-2 cursor-pointer text-xs text-gray-400 py-1" v-for="(i, index) in 30" :key="i" :id="'B'+index">
           </div>
         </div>
       </div>
@@ -78,13 +80,41 @@ export default{
       bus.$emit('activeComponent', 'Seat')
     },
     bookedSeat(id, column){
-      event.target.style.backgroundColor = "green"
-      this.seatID.push(column.concat(id))
-      localStorage.setItem('seatID', JSON.stringify(this.seatID))
+      //  @TODO: limit number of seats that one passenger can book, create a corresponding modal
+      //  Select corresponding elements from the DOM
+      const el_id = column.concat(id)
+      let el = document.querySelector(`div#${el_id}`)
+      //  check if column.concat(id) exists in the seatID array, if it does, remove it from the array and update local storage, update UI
+      const seatIndex = this.seatID.indexOf(el_id)
+      if(seatIndex >= 0){
+        //  Remove seats
+        console.log('....here')
+        this.seatID.splice(seatIndex, 1);
+        localStorage.setItem('seatID', JSON.stringify(this.seatID))
+        el.style.backgroundColor = "#000"
+      }else{
+        //  Add seats
+        el.style.backgroundColor = "green"
+        this.seatID.push(el_id)
+        localStorage.setItem('seatID', JSON.stringify(this.seatID))
+      }
+    },
+    previousSeat(){
+      const seats = JSON.parse(localStorage.getItem('seatID'))
+      if(seats && seats.length > 0){
+        seats.forEach((id)=>{
+          let el = document.querySelector(`div#${id}`)
+          this.seatID.push(id)
+          el.style.backgroundColor = "green"
+        })
+      }
     }
   },
   created(){
     this.activeComponent()
+  },
+  mounted(){
+    this.previousSeat()
   }
 }
 </script>

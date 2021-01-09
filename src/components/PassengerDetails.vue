@@ -2,7 +2,9 @@
   <div id="passengerDetails">
     <!-- back and change flight -->
     <div class="flex justify-between py-2 px-3 md:px-5 lg:px-16 md:py-3 lg:py-4 mt-4 md:mt-5 lg:mx-2 bg-gray-800 text-sm md:text-base lg:text-lg text-white">
-      <input class="p-2 rounded-sm bg-red-600 text-white text-xs md:text-sm lg:text-base shadow hover:bg-red-700 focus:outline-none" type="submit" value="CHANGE FLIGHT">
+      <router-link :to="{name:'Seats', hash:'#seats'}">
+        <span class="my-auto underline cursor-pointer uppercase font-semibold"><fa-icon class="mr-1 text-lg self-center mt-1" :icon="['fas', 'angle-double-left']" size="1x"/>change seat</span>
+      </router-link>
       <span @click.prevent="persistPassengerDetails()" class="my-auto underline cursor-pointer uppercase font-semibold">proceed<fa-icon class="ml-1 text-lg self-center mt-1" :icon="['fas', 'angle-double-right']" size="1x"/></span>
     </div>
     <!-- header -->
