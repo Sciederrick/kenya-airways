@@ -3,7 +3,7 @@
     <!-- results nav -->
     <div id="resultsNav" class="flex justify-between py-2 px-3 md:px-5 lg:px-16 md:py-3 lg:py-4 my-4 md:my-5 lg:mx-2 bg-gray-800 text-sm md:text-base lg:text-lg text-white">
       <span class="text-xs md:text-sm">{{availableFlights.length}} result(s) for : {{new Date($route.params.datetime||datetime).getDay()}}, {{ months[new Date($route.params.datetime||datetime).getMonth()]}} {{ new Date($route.params.datetime||datetime).getFullYear()}}</span>
-      <span @click="$router.go(-1)" class="underline cursor-pointer uppercase"><fa-icon class="mr-1 text-lg self-center mt-1" :icon="['fas', 'angle-double-left']" size="1x"/>Go back</span>
+      <span @click="$router.go(-1)" class="underline cursor-pointer uppercase font-semibold"><fa-icon class="mr-1 text-lg self-center mt-1" :icon="['fas', 'angle-double-left']" size="1x"/>Go back</span>
     </div>
     <!-- header -->
     <div v-if="availableFlights.length!=0" class="mx-1 md:mx-2 lg:mx-20 lg:my-20 flex flex-row justify-between md:justify-around items-center p-2">
@@ -17,7 +17,7 @@
         <fa-icon class="md:hidden text-gray-400" :icon="['fas','plane']" size="2x"/>
       </div>
       <div class="w-40 h-32 md:w-48 md:h-40 lg:w-64 lg:h-56 bg-gray-700 flex flex-col justify-end rounded-sm relative">
-        <span class="absolute top-0 right-0 m-2 text-xs md:text-sm bg-white text-gray-800 rounded p-1 font-semibold">70,000 KES</span>
+        <!-- <span class="absolute top-0 right-0 m-2 text-xs md:text-sm bg-white text-gray-800 rounded p-1 font-semibold">70,000 KES</span> -->
         <div class="bg-red-600">
           <p class="text-white text-sm lg:text-lg p-1">{{$route.params.arrivalCity||arrivalCity}}</p>
         </div>
@@ -44,7 +44,7 @@
             Unsuccessful
           </div>
           <div class="alert-description text-sm lg:text-lg text-yellow-600 md:px-4 lg:px-24">
-            No matching flights for the specified criteria...check our <span class="text-blue-700 caveat text-xl underline cursor-pointer hover:text-black">flight calendar</span> instead? or <span @click="$router.go(-1)" class="underline cursor-pointer text-blue-700 hover:text-black">go back to flight search <fa-icon :icon="['fas','search']" size="1x" color="black"/></span>
+            No matching flights for the specified criteria...check our <span @click="$router.push({name:'Home', hash:'#bookingEnquiry'})" class="underline cursor-pointer text-blue-700 hover:text-black">go back to flight search <fa-icon :icon="['fas','search']" size="1x" color="black"/></span>
           </div>
         </div>
       </div>

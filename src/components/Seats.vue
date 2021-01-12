@@ -11,13 +11,8 @@
     </div>
     <!-- header -->
     <div class="flex justify-between px-2 md:px-4 lg:px-16 bg-green-300 md:mx-2 py-1 my-1">
-      <!-- seat price * no of seats -->
       <div class="">
-        <span class="text-red-600">3</span> * 70,000
-      </div>
-      <!-- total fee -->
-      <div class="">
-        Total Fee: <span class="text-red-600">210,000 KES</span>
+        <span class="text-gray-800 font-semibold">{{flightRoute.depatureCity}}<fa-icon class="mx-2 text-white" :icon="['fas', 'plane']" size="1x"/>{{flightRoute.arrivalCity}}</span>
       </div>
     </div>
     <div class="flex flex-col md:flex-row lg:mx-2 relative">
@@ -72,7 +67,11 @@ export default{
   name:'Seats',
   data(){
     return {
-      seatID:[]
+      seatID:[],
+      flightRoute:{
+        depatureCity: '',
+        arrivalCity: ''
+      }
     }
   },
   methods:{
@@ -108,10 +107,23 @@ export default{
           el.style.backgroundColor = "green"
         })
       }
+    },
+    travelRoute(){
+      const route = {
+        depatureCity: localStorage.getItem('depatureCity'),
+        arrivalCity: localStorage.getItem('arrivalCity')
+      }
+      if(route.depatureCity && route.arrivalCity){
+        this.flightRoute.depatureCity = route.depatureCity
+        this.flightRoute.arrivalCity = route.arrivalCity
+      }else{
+        // @TODO: take the user back to the first step, data lost??
+      }
     }
   },
   created(){
     this.activeComponent()
+    this.travelRoute()
   },
   mounted(){
     this.previousSeat()

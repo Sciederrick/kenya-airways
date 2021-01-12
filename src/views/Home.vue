@@ -123,6 +123,9 @@ export default {
   methods:{
     activeComponent(){
       bus.$on('activeComponent', (currentComponent) => {
+        for (const component in this.bookingProgress) {
+          this.bookingProgress[component] = false //reset
+        }
         this.bookingProgress[currentComponent] = true
         switch(currentComponent){
           case 'BookingEnquiry':

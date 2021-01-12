@@ -10,9 +10,11 @@ Vue.use(UUID);
 Vue.config.productionTip = false
 
 //global components
-import PaymentConfirmation from '@/components/PaymentConfirmationModal.vue'
+import PaymentConfirmation from '@/components/Modals/PaymentConfirmationModal.vue'
+import Error from '@/components/Modals/ErrorModal.vue'
 
 Vue.component('PaymentConfirmation', PaymentConfirmation)
+Vue.component('Error', Error)
 
 
 export const bus = new Vue()
