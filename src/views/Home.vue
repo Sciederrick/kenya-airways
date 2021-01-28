@@ -67,19 +67,22 @@
             <div class="rounded-full mx-auto md:w-24 md:h-24 lg:w-40 lg:h-40 overflow-hidden">
               <img class="w-full h-full object-cover" :src="require('@/assets/images/michael-dam-mEZ3PoFGs_k-unsplash.jpg')" alt="CEO">
             </div>
-            <p class="font-semibold py-5 text-center md:text-sm lg:text-base">CEO Kenya Airways</p>
+            <p class="font-semibold pt-5 text-center md:text-sm lg:text-base">Alice Stevens</p>
+            <p class="font-semibold pb-5 text-center caveat text-sm text-red-600">CEO Kenya Airways</p>
           </div>
           <div class="mx-auto">
             <div class="rounded-full mx-auto md:w-24 md:h-24 lg:w-40 lg:h-40 overflow-hidden">
               <img class="w-full h-full object-cover" :src="require('@/assets/images/prince-akachi-J1OScm_uHUQ-unsplash.jpg')" alt="CFO">
             </div>
-            <p class="font-semibold py-5 text-center md:text-sm lg:text-base">CFO Kenya Airways</p>
+            <p class="font-semibold pt-5 text-center md:text-sm lg:text-base">Shanice Anderson</p>
+            <p class="font-semibold pb-5 text-center caveat text-sm text-red-600">CFO Kenya Airways</p>
           </div>
           <div class="mx-auto">
             <div class="rounded-full mx-auto md:w-24 md:h-24 lg:w-40 lg:h-40 overflow-hidden">
               <img class="w-full h-full object-cover" :src="require('@/assets/images/usman-yousaf-yIOViGQmjJ4-unsplash.jpg')" alt="CTO">
             </div>
-            <p class="font-semibold py-5 text-center md:text-sm lg:text-base">CTO Kenya Airways</p>
+            <p class="font-semibold pt-5 text-center md:text-sm lg:text-base">Shamir Kumar</p>
+            <p class="font-semibold pb-5 text-center caveat text-sm text-red-600">CTO Kenya Airways</p>
           </div>
         </div>
         <div class="w-5/6 mx-auto bg-red-700" style="height:1px;">
