@@ -87,7 +87,6 @@ export default{
       const seatIndex = this.seatID.indexOf(el_id)
       if(seatIndex >= 0){
         //  Remove seats
-        console.log('....here')
         this.seatID.splice(seatIndex, 1);
         localStorage.setItem('seatID', JSON.stringify(this.seatID))
         el.style.backgroundColor = "#000"

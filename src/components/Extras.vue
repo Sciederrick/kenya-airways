@@ -8,16 +8,16 @@
       <span @click.prevent="persistExtras()" class="my-auto underline cursor-pointer font-semibold uppercase">pay<fa-icon class="ml-1 text-lg self-center mt-1" :icon="['fas', 'angle-double-right']" size="1x"/></span>
     </div>
     <!-- header -->
-    <div class="flex justify-between px-2 md:px-4 lg:px-16 bg-green-300 md:mx-2 py-2 my-1">
+    <!-- <div class="flex justify-between px-2 md:px-4 lg:px-16 bg-green-300 md:mx-2 py-2 my-1"> -->
       <!-- seat price * no of seats -->
-      <div class="">
+      <!-- <div class="">
         <span class="text-red-600">3</span> * 70,000 + 7000
-      </div>
+      </div> -->
       <!-- total fee -->
-      <div class="">
+      <!-- <div class="">
         Total Fee: <span class="text-red-600">217,000 KES</span>
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
     <!-- luggage -->
     <div class="flex flex-wrap justify-end mx-1 py-2 relative">
       <div class="absolute inset-0 w-full h-auto border-l border-white rounded">
@@ -127,14 +127,14 @@ export default{
     activeComponent(){
       bus.$emit('activeComponent', 'Extras')
     },
-    previousDetails(){
-      let previousData = JSON.parse(localStorage.getItem('extras'))
-      if(previousData){
-        this.numberOfBags = previousData.numberOfBags
-        this.pet[previousData.pet.name].show = true
-        this.pet[previousData.pet.name].count = previousData.pet.number
-      }
-    },
+    // previousDetails(){
+    //   let previousData = JSON.parse(localStorage.getItem('extras'))
+    //   if(previousData){
+    //     this.numberOfBags = previousData.numberOfBags
+    //     this.pet[previousData.pet.name].show = true
+    //     this.pet[previousData.pet.name].count = previousData.pet.number
+    //   }
+    // },
     persistExtras(){
       /*From Stack Overflow👀*/
       Object.filter = (obj, predicate) =>
@@ -156,7 +156,7 @@ export default{
   },
   created(){
     this.activeComponent()
-    this.previousDetails()
+    // this.previousDetails()
   }
 }
 </script>

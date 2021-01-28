@@ -12,8 +12,8 @@
       <ul class="hidden md:block">
         <li class="inline md:px-3 lg:px-6"><router-link :to="{name:'Home'}"><fa-icon class="mx-2 hidden md:inline" :icon="['fas','home']" size="1x"/>Home</router-link></li>
         <li class="inline md:px-3 lg:px-6"><router-link :to="{name:'ContactUs'}"><fa-icon class="mx-2 hidden md:inline" :icon="['fas','tty']" size="1x"/>Contact&nbsp;<span class="md:hidden lg:inline">Us</span></router-link></li>
-        <li class="inline md:px-3 lg:px-6"><router-link :to="{name:'Careers'}"><fa-icon class="mx-2 hidden md:inline" :icon="['fas','tty']" size="1x"/>Careers&nbsp;</router-link></li>
-        <li class="inline md:px-3 lg:px-6"><router-link :to="{hash:'#footer'}"><fa-icon class="mx-2 hidden md:inline" :icon="['fas','info']" size="1x"/>About&nbsp;<span class="md:hidden lg:inline">Us</span></router-link></li>
+        <li class="inline md:px-3 lg:px-6"><router-link :to="{name:'Careers'}"><fa-icon class="mx-2 hidden md:inline" :icon="['fas','graduation-cap']" size="1x"/>Careers&nbsp;</router-link></li>
+        <li class="inline md:px-3 lg:px-6"><router-link :to="{name: 'Home', hash:'#footer'}"><fa-icon class="mx-2 hidden md:inline" :icon="['fas','info']" size="1x"/>About&nbsp;<span class="md:hidden lg:inline">Us</span></router-link></li>
       </ul>
     </nav>
     <!-- mobile navbar -->

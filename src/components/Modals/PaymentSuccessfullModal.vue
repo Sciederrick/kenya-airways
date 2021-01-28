@@ -101,6 +101,7 @@ export default{
         doc.autoPrint({variant:'non-conform'})
         doc.save('ticket.pdf')
         this.closeModal()
+        this.$router.push({name:'Home'})
       })
     },
     getPassengerDetails(){
