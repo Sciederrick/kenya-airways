@@ -13,8 +13,11 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/vue-fontawesome": "^2.0.0",
     "core-js": "^3.6.5",
+    "jspdf": "^2.3.0",
+    "jspdf-autotable": "^3.5.13",
     "tailwindcss": "^1.9.6",
     "vue": "^2.6.11",
+    "vue-js-popover": "^1.2.1",
     "vue-router": "^3.2.0",
     "vue-uuid": "^2.0.2",
     "vuejs-datepicker": "^1.6.2"

@@ -127,21 +127,36 @@ export default{
     activeComponent(){
       bus.$emit('activeComponent', 'Extras')
     },
+    previousDetails(){
+      let previousData = JSON.parse(localStorage.getItem('extras'))
+      if(previousData){
+        this.numberOfBags = previousData.numberOfBags
+        this.pet[previousData.pet.name].show = true
+        this.pet[previousData.pet.name].count = previousData.pet.number
+      }
+    },
     persistExtras(){
       /*From Stack Overflow👀*/
       Object.filter = (obj, predicate) =>
         Object.keys(obj)
               .filter( key => predicate(obj[key]) )
               .reduce( (res, key) => (res[key] = obj[key], res), {} )
+
       let filtered = Object.filter(this.pet, pet => pet.show !== false)
-      let extras = {numberOfBags:this.numberOfBags, pet:{name:Object.keys(filtered)[0], number:filtered[Object.keys(filtered)].count}}
-      //  store extras in local storage
-      localStorage.setItem('extras', extras)
-      this.$router.push({ name: 'Visa', hash: '#visa'})
+      if(Object.entries(filtered).length === 0){
+        // No Extras defined
+        this.$router.push({ name: 'Visa', hash: '#visa'})
+      }else{
+        let extras = {numberOfBags:this.numberOfBags, pet:{name:Object.keys(filtered)[0], number:filtered[Object.keys(filtered)].count}}
+        localStorage.setItem('extras', JSON.stringify(extras))
+        console.log(extras)
+        this.$router.push({ name: 'Visa', hash: '#visa'})
+      }
     }
   },
   created(){
     this.activeComponent()
+    this.previousDetails()
   }
 }
 </script>

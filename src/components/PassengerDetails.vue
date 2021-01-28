@@ -17,7 +17,7 @@
       <!-- title --> <!-- first name --> <!-- last name -->
       <div class="flex flex-wrap justify-start mb-4 md:mb-10">
         <div class="flex ml-2 my-1">
-          <select ref="title" class="border border-black shadow rounded pl-3 p-2 lg:py-3" id="title">
+          <select v-model="previousDetails[index].title" ref="title" class="border border-black shadow rounded pl-3 p-2 lg:py-3" id="title">
             <option disabled value="" selected>title</option>
             <option>Dr.</option>
             <option>Mr.</option>
@@ -28,23 +28,23 @@
           </select>
         </div>
         <div class="w-full md:w-1/3 border rounded mx-2 my-1 border-black shadow-sm p-2 lg:py-3">
-          <input ref="firstName" class="w-full text-sm md:text-base lg:text-lg pl-10 focus:outline-none" type="text" placeholder="first name">
+          <input v-model="previousDetails[index].firstName" ref="firstName" class="w-full text-sm md:text-base lg:text-lg pl-10 focus:outline-none" type="text" placeholder="first name">
         </div>
         <div class="w-full md:w-1/3 border rounded mx-2 my-1 border-black shadow-sm p-2 lg:py-3">
-          <input ref="lastName" class="w-full text-sm md:text-base lg:text-lg pl-10 focus:outline-none" type="text" placeholder="last name">
+          <input v-model="previousDetails[index].lastName" ref="lastName" class="w-full text-sm md:text-base lg:text-lg pl-10 focus:outline-none" type="text" placeholder="last name">
         </div>
       </div>
       <!-- date of birth -->
       <div class="md:w-2/3 lg:w-1/2 border rounded mx-2 my-4 md:my-10 border-black shadow-sm p-2 lg:py-3">
         <div class="flex">
           <label for="DOB" title="date of birth" class="text-gray-600">DOB:</label>
-          <input ref="DOB" class="w-full self-center text-center focus:outline-none" type="date" placeholder="date of birth" id="DOB">
+          <input v-model="previousDetails[index].DOB" ref="DOB" class="w-full self-center text-center focus:outline-none" type="date" placeholder="date of birth" id="DOB">
         </div>
       </div>
       <div class="flex flex-wrap justify-start">
         <!-- gender -->
         <div class="flex ml-2 md:w-1/3">
-          <select ref="gender" class="w-full border border-black shadow rounded pl-3 p-2 lg:py-3" id="gender">
+          <select v-model="previousDetails[index].gender" ref="gender" class="w-full border border-black shadow rounded pl-3 p-2 lg:py-3" id="gender">
             <option disabled value="" selected>gender</option>
             <option>Male</option>
             <option>Female</option>
@@ -52,7 +52,7 @@
         </div>
         <!-- infant -->
         <div class="flex ml-2 md:w-1/3">
-          <select ref="infant" class="w-full border border-black shadow rounded pl-3 p-2 lg:py-3" id="infant">
+          <select v-model="previousDetails[index].infant" ref="infant" class="w-full border border-black shadow rounded pl-3 p-2 lg:py-3" id="infant">
             <option disabled value="" selected>infant</option>
             <option value="true">yes</option>
             <option value="false">no</option>
@@ -65,14 +65,14 @@
           <div>
             <fa-icon class="self-center mx-2" :icon="['fas', 'phone-alt']" size="1x"/>
           </div>
-          <input ref="phone" class="w-full pl-10 text-sm md:text-base lg:text-lg focus:outline-none" type="tel" placeholder="phone number">
+          <input v-model="previousDetails[index].phone" ref="phone" class="w-full pl-10 text-sm md:text-base lg:text-lg focus:outline-none" type="tel" placeholder="phone number">
         </div>
         <!-- email -->
         <div class="flex md:w-1/3 border rounded mx-2 my-4 md:my-10 border-black shadow-sm p-2 lg:py-3">
           <div>
             <fa-icon class="self-center mx-2" :icon="['far', 'envelope']" size="1x"/>
           </div>
-          <input ref="email" class="w-full pl-10 text-sm md:text-base lg:text-lg focus:outline-none" type="email" placeholder="email address">
+          <input v-model="previousDetails[index].email" ref="email" class="w-full pl-10 text-sm md:text-base lg:text-lg focus:outline-none" type="email" placeholder="email address">
         </div>
       </div>
     </form>
@@ -93,7 +93,19 @@ export default{
   data(){
     return {
       numberOfSeats: JSON.parse(localStorage.getItem('seatID')).length || 0,
-      passengerDetails:[],
+      previousDetails: [
+        {
+          title:"Dr.",
+          firstName:"Derrick",
+          lastName:"Kadivilla",
+          DOB:"1997-07-22",
+          gender:"Male",
+          infant:"Yes",
+          phone:"254743909123",
+          email:"derrickmbarani@gmail.com"
+        }
+      ],
+      passengerDetails: [],
       errors: [],
       errorModal: false
     }
@@ -106,68 +118,78 @@ export default{
       string.toLowerCase()
       return string.charAt(0).toUpperCase() + string.slice(1);
     },
+    previousPassengerDetails(){
+      let previousData = JSON.parse(localStorage.getItem('passengerDetails'))
+      if(previousData && previousData.length > 0){
+        previousData.forEach((item, index)=>{
+          for (const property in item){
+            if(property === "fullName"){
+              // Break it down to title, firstName and lastName
+              item.title = item.fullName.split(" ")[0]
+              item.firstName = item.fullName.split(" ")[1]
+              item.lastName = item.fullName.split(" ")[2]
+            }
+          }
+        })
+        this.previousDetails = previousData
+      }else{
+        // @TODO: default data
+      }
+    },
     persistPassengerDetails(){
       //  Check whether seats have been booked
       if(this.numberOfSeats > 0){
         try{
           //  Iterate through each passenger
           let iteration_count = this.numberOfSeats
-          let data = {}
           for (let i = 0; i < iteration_count; i++) {
-            data[i]._id = uuid.v4()
-            data[i].fullName = `${this.$refs.title[i].value} ${this.capitalizeFirstLetter(this.$refs.firstName[i].value)} ${this.capitalizeFirstLetter(this.$refs.lastName[i].value)}`
-            data[i].DOB = this.$refs.DOB[i].value
-            data[i].gender = this.$refs.gender[i].value
-            data[i].phone = this.$refs.phone[i].value
-            data[i].email = this.$refs.email[i].value.toLowerCase()
-            data[i].infant = this.$refs.infant[i].value
-            data[i].seatID = JSON.parse(localStorage.getItem('seatID'))[i]
-            data[i].flightID = localStorage.getItem('flightID')
-            data[i].datetime = localStorage.getItem('datetime')
-            data[i].from = localStorage.getItem('depatureCity')
-            data[i].to = localStorage.getItem('arrivalCity')
-            this.passengerDetails.push(data)
+            let data = {}
+            data._id = uuid.v4()
+            data.fullName = `${this.$refs.title[i].value} ${this.capitalizeFirstLetter(this.$refs.firstName[i].value)} ${this.capitalizeFirstLetter(this.$refs.lastName[i].value)}`
+            data.DOB = this.$refs.DOB[i].value
+            data.gender = this.$refs.gender[i].value
+            data.phone = this.$refs.phone[i].value
+            data.email = this.$refs.email[i].value.toLowerCase()
+            data.infant = this.$refs.infant[i].value
+            data.seatID = JSON.parse(localStorage.getItem('seatID'))[i]
+            data.flightID = localStorage.getItem('flightID')
+            data.datetime = localStorage.getItem('datetime')
+            data.from = localStorage.getItem('depatureCity')
+            data.to = localStorage.getItem('arrivalCity')
+            if(Object.values(data).length !== 12){
+              throw "missing field, please try again"
+            }else{
+              Object.values(data).forEach((item, index)=>{
+                if(item.trim().length === 0){
+                  throw "missing field, please try again"
+                }
+              })
+              // push i(th) passenger details
+              this.passengerDetails.push(data)
+            }
           }
-          // validation
-          // if(data.constructor.length > 0){
-          //   this.errors = []
-          //   for (const property in data) {
-          //     data[property].forEach((el, index, arr)=>{
-          //       if(!el.value().trim()){
-          //         this.errors.push(`empty value in the field ${arr} in form ${arr + 1}`)
-          //       }
-          //     })
-          //   }
-          // }else{
-          //   this.errors = []
-          //   this.errors.push('empty fields detected')
-          // }
-          //  store passenger details
+
+         // store passenger details
           localStorage.setItem('passengerDetails', JSON.stringify(this.passengerDetails))
-          //  reroute to extras component
+           // reroute to extras component
           this.$router.push({ name: 'Extras', hash: '#extras'})
         }catch(err){
           this.errors = []
-          this.errors.push('empty fields detected')
+          this.errors.push(err)
           this.errorModal = true
         }
 
-        // if(this.errors.length > 0){
-          //  display error
-          // this.errorModal = true
-        // }else{
-          //  store passenger details
-          // localStorage.setItem('passengerDetails', JSON.stringify(this.passengerDetails))
-          //  reroute to extras component
-          // this.$router.push({ name: 'Extras', hash: '#extras'})
-        // }
       }else{
-        //@TODO:display error message and quit processing
+        // Previous process incomplete
+        this.errors = []
+        this.errors.push("Seat selection process incomplete")
+        this.errorModal = true
       }
     }
   },
   created(){
     this.activeComponent()
+    this.previousPassengerDetails()
     //  Error modal
     bus.$on('closeErrorModal', (data)=>{
       this.errorModal = data
