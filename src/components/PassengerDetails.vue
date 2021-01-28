@@ -17,7 +17,7 @@
       <!-- title --> <!-- first name --> <!-- last name -->
       <div class="flex flex-wrap justify-start mb-4 md:mb-10">
         <div class="flex ml-2 my-1">
-          <select v-model="previousDetails[index].title" ref="title" class="border border-black shadow rounded pl-3 p-2 lg:py-3" id="title">
+          <select v-model="previousDetails[index].title" ref="title" class="border border-black shadow rounded pl-3 p-2 lg:py-3 bg-white" id="title">
             <option disabled value="" selected>title</option>
             <option>Dr.</option>
             <option>Mr.</option>
@@ -27,24 +27,24 @@
             <option>Eng.</option>
           </select>
         </div>
-        <div class="w-full md:w-1/3 border rounded mx-2 my-1 border-black shadow-sm p-2 lg:py-3">
+        <div class="w-full md:w-1/3 border rounded mx-2 my-1 border-black shadow-sm p-2 lg:py-3 bg-white">
           <input v-model="previousDetails[index].firstName" ref="firstName" class="w-full text-sm md:text-base lg:text-lg pl-10 focus:outline-none" type="text" placeholder="first name">
         </div>
-        <div class="w-full md:w-1/3 border rounded mx-2 my-1 border-black shadow-sm p-2 lg:py-3">
+        <div class="w-full md:w-1/3 border rounded mx-2 my-1 border-black shadow-sm p-2 lg:py-3 bg-white">
           <input v-model="previousDetails[index].lastName" ref="lastName" class="w-full text-sm md:text-base lg:text-lg pl-10 focus:outline-none" type="text" placeholder="last name">
         </div>
       </div>
       <!-- date of birth -->
-      <div class="md:w-2/3 lg:w-1/2 border rounded mx-2 my-4 md:my-10 border-black shadow-sm p-2 lg:py-3">
+      <div class="md:w-2/3 lg:w-1/2 border rounded mx-2 my-4 md:my-10 border-black shadow-sm p-2 lg:py-3 bg-white">
         <div class="flex">
           <label for="DOB" title="date of birth" class="text-gray-600">DOB:</label>
-          <input v-model="previousDetails[index].DOB" ref="DOB" class="w-full self-center text-center focus:outline-none" type="date" placeholder="date of birth" id="DOB">
+          <input v-model="previousDetails[index].DOB" ref="DOB" class="w-full self-center text-center focus:outline-none bg-white" type="date" placeholder="date of birth" id="DOB">
         </div>
       </div>
       <div class="flex flex-wrap justify-start">
         <!-- gender -->
         <div class="flex ml-2 md:w-1/3">
-          <select v-model="previousDetails[index].gender" ref="gender" class="w-full border border-black shadow rounded pl-3 p-2 lg:py-3" id="gender">
+          <select v-model="previousDetails[index].gender" ref="gender" class="w-full border border-black shadow rounded pl-3 p-2 lg:py-3 bg-white" id="gender">
             <option disabled value="" selected>gender</option>
             <option>Male</option>
             <option>Female</option>
@@ -52,7 +52,7 @@
         </div>
         <!-- infant -->
         <div class="flex ml-2 md:w-1/3">
-          <select v-model="previousDetails[index].infant" ref="infant" class="w-full border border-black shadow rounded pl-3 p-2 lg:py-3" id="infant">
+          <select v-model="previousDetails[index].infant" ref="infant" class="w-full border border-black shadow rounded pl-3 p-2 lg:py-3 bg-white" id="infant">
             <option disabled value="" selected>infant</option>
             <option value="true">yes</option>
             <option value="false">no</option>
@@ -61,14 +61,14 @@
       </div>
       <div class="flex flex-wrap justify-start mb-4 md:mb-10">
         <!-- phone number -->
-        <div class="flex md:w-1/3 border rounded mx-2 my-4 md:my-10 border-black shadow-sm p-2 lg:py-3">
+        <div class="flex md:w-1/3 border rounded mx-2 my-4 md:my-10 border-black shadow-sm p-2 lg:py-3 bg-white">
           <div>
             <fa-icon class="self-center mx-2" :icon="['fas', 'phone-alt']" size="1x"/>
           </div>
           <input v-model="previousDetails[index].phone" ref="phone" class="w-full pl-10 text-sm md:text-base lg:text-lg focus:outline-none" type="tel" placeholder="phone number">
         </div>
         <!-- email -->
-        <div class="flex md:w-1/3 border rounded mx-2 my-4 md:my-10 border-black shadow-sm p-2 lg:py-3">
+        <div class="flex md:w-1/3 border rounded mx-2 my-4 md:my-10 border-black shadow-sm p-2 lg:py-3 bg-white">
           <div>
             <fa-icon class="self-center mx-2" :icon="['far', 'envelope']" size="1x"/>
           </div>

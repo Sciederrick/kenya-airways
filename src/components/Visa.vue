@@ -4,7 +4,7 @@
     <form class="mx-2 md:ml-10 lg:ml-16">
       <!-- credit card type  -->
       <div class="flex my-3">
-        <select v-model="paymentDetails.creditCardType"class="border border-black shadow rounded pl-3 p-2 lg:py-3" id="title">
+        <select v-model="paymentDetails.creditCardType"class="border border-black shadow rounded pl-3 p-2 lg:py-3 bg-white" id="title">
           <option disabled value="" selected>CREDIT CARD TYPE</option>
           <option>VISA</option>
           <option>MASTER CARD</option>
@@ -15,11 +15,11 @@
         </select>
       </div>
       <!-- credit card number -->
-      <div class="w-full md:w-1/3 border rounded my-3 border-black shadow p-2 lg:py-3">
+      <div class="w-full md:w-1/3 border rounded my-3 border-black shadow p-2 lg:py-3 bg-white">
         <input v-model="paymentDetails.creditCardNumber" class="w-full text-sm pl-10 focus:outline-none" type="text" placeholder="CREDIT CARD NUMBER *">
       </div>
       <!-- full name -->
-      <div class="w-full md:w-1/3 border rounded my-3 border-black shadow p-2 lg:py-3">
+      <div class="w-full md:w-1/3 border rounded my-3 border-black shadow p-2 lg:py-3 bg-white">
         <input v-model="paymentDetails.fullName" class="w-full text-sm pl-10 focus:outline-none" type="text" placeholder="FULL NAME (as displayed on the credit card) *">
       </div>
       <!-- credit card expiry date(MM/YY) & CVC -->
@@ -27,7 +27,7 @@
         <!-- <div class="w-1/2 lg:w-1/4 border rounded mr-2 border-black shadow p-2 lg:py-3">
           <input v-model="paymentDetails.creditCardExpiryDate" class="w-full self-center text-center focus:outline-none" type="date">
         </div> -->
-        <div class="w-1/4 border rounded mx-2 border-black shadow-sm p-2 lg:py-3">
+        <div class="w-1/4 border rounded mx-2 border-black shadow-sm p-2 lg:py-3 bg-white">
           <input v-model="paymentDetails.CVC_Number" class="w-full text-sm text-center focus:outline-none" type="number" placeholder="CVC *">
         </div>
         <button class="flex justify-center items-center w-8 h-8 border rounded-full mx-2 border-black shadow-sm focus:outline-none" v-popover:CVC_Number>

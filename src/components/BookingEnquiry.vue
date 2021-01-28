@@ -3,7 +3,7 @@
     <form class="py-2">
       <!-- from and to -->
       <div class="flex flex-wrap lg:px-10">
-        <div class="flex md:mx-auto w-full md:w-2/3 lg:w-1/2 border mx-2 mb-2 md:my-3 border-black shadow p-1 relative">
+        <div class="flex md:mx-auto w-full md:w-2/3 lg:w-1/2 border mx-2 mb-2 md:my-3 border-black shadow p-1 relative bg-white">
           <div class="md:py-2">
             <label class="text-sm" for="from">FROM:</label>
             <fa-icon class="float-left ml-4" :icon="['fas', 'plane-departure']" size="1x"/>
@@ -13,7 +13,7 @@
             <li v-for="city in searchCity" class="cursor-pointer underline" @click="insertCityInTheInputField">{{city}}</li>
           </ul>
         </div>
-        <div class="flex md:mx-auto w-full md:w-2/3 lg:w-1/2 border mx-2 mb-2 md:my-3 border-black shadow p-1 relative">
+        <div class="flex md:mx-auto w-full md:w-2/3 lg:w-1/2 border mx-2 mb-2 md:my-3 border-black shadow p-1 relative bg-white">
           <div class="md:py-2">
             <label class="text-sm" for="to">TO:</label>
             <fa-icon class="float-left ml-4" :icon="['fas', 'plane-arrival']" size="1x"/>
@@ -26,7 +26,7 @@
       </div>
       <!-- date -->
       <div class="flex md:mx-auto md:w-2/3 lg:justify-center mx-2 mb-2 md:my-3">
-        <datepicker v-model="enquiry.date" wrapper-class="border border-black shadow px-4" input-class="p-4 md:text-base lg:text-lg focus:outline-none" calendar-class="caveat text-2xl text-gray-900" type="date" name="from" id="date" :calendar-button="true" :bootstrap-styling="true" :clear-button="true" calendar-button-icon-content="DATE:" :required="true" :typeable="true" format="MM dd yyyy" placeholder="MM/DD/YYYY" :disabled-dates="datepicker.disabledDates">
+        <datepicker v-model="enquiry.date" wrapper-class="border border-black shadow px-4 bg-white" input-class="p-4 md:text-base lg:text-lg focus:outline-none" calendar-class="caveat text-2xl text-gray-900" type="date" name="from" id="date" :calendar-button="true" :bootstrap-styling="true" :clear-button="true" calendar-button-icon-content="DATE:" :required="true" :typeable="true" format="MM dd yyyy" placeholder="MM/DD/YYYY" :disabled-dates="datepicker.disabledDates">
           <div slot="beforeCalendarHeader" class="calendar-header text-center text-red-800 relative">
             <div class="h-16 w-full">
               <img class="h-full w-full object-cover" :src="require('@/assets/images/damian-patkowski-T-LfvX-7IVg-unsplash.jpg')" alt="">

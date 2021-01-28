@@ -37,24 +37,24 @@
     <!-- testimonials -->
       <div v-if="minimalInterface" class="hidden mx-auto md:flex md:flex-row md:flex-wrap md:justify-evenly md:my-16 md:pt-10">
         <div class="p-6 my-5 max-w-lg bg-gray-100">
-          <h2 class="text-left pb-1 text-red-800 font-bold caveat text-2xl">“Lorem ipsum dolor sit amet”</h2>
-          <p class="text-left pl-5 text-xl">Sed nunc nisi, pretium eget vestibulum a, bibendum id velit. In urna orci, imperdiet quis pulvinar in, pretium et turpis.</p>
-          <p class="text-right font-hairline text-black caveat text-xl">Lorem ipsum dolor sit amet</p>
+          <h2 class="text-left pb-1 text-red-800 font-bold caveat text-2xl">Mr Tony Fernandes</h2>
+          <p class="text-left pl-5 text-xl">These awards are widely regarded as the industry's benchmark for Excellence. For us, the awards clearly reflect a vote of confidence from global travellers, who acknowledge and appreciate our continuous drive to deliver high-quality service. .</p>
+          <p class="text-right font-hairline text-black caveat text-xl">CEO, Jetstar Airways</p>
         </div>
         <div class="p-6 my-5 max-w-lg bg-gray-100">
-          <h2 class="text-left pb-1 text-red-800 font-bold caveat text-2xl">“Lorem ipsum dolor sit amet”</h2>
-          <p class="text-left pl-5 text-xl">Sed nunc nisi, pretium eget vestibulum a, bibendum id velit. In urna orci, imperdiet quis pulvinar in, pretium et turpis.</p>
-          <p class="text-right font-hairline text-black caveat text-xl">Lorem ipsum dolor sit amet</p>
+          <h2 class="text-left pb-1 text-red-800 font-bold caveat text-2xl">Mr Tim Clark</h2>
+          <p class="text-left pl-5 text-xl">These highly respected awards are based on direct passenger satisfaction, and are a real testament and true reflection of the hard work of all of our employees.</p>
+          <p class="text-right font-hairline text-black caveat text-xl">CEO, Garuda Indonesia</p>
         </div>
         <div class="p-6 my-5 max-w-lg bg-gray-100">
-          <h2 class="text-left pb-1 text-red-800 font-bold caveat text-2xl">“Lorem ipsum dolor sit amet”</h2>
-          <p class="text-left pl-5 text-xl">Sed nunc nisi, pretium eget vestibulum a, bibendum id velit. In urna orci, imperdiet quis pulvinar in, pretium et turpis.</p>
-          <p class="text-right font-hairline text-black caveat text-xl">Lorem ipsum dolor sit amet</p>
+          <h2 class="text-left pb-1 text-red-800 font-bold caveat text-2xl">Mr Akbar Al Baker </h2>
+          <p class="text-left pl-5 text-xl">Winning this prestigious award demonstrates Kenya Airways consistent commitment to high-quality customer service and all-around excellence.</p>
+          <p class="text-right font-hairline text-black caveat text-xl">CEO, Cathay Pacific Airways</p>
         </div>
         <div class="p-6 my-5 max-w-lg bg-gray-100">
-          <h2 class="text-left pb-1 text-red-800 font-bold caveat text-2xl">“Lorem ipsum dolor sit amet”</h2>
-          <p class="text-left pl-5 text-xl">Sed nunc nisi, pretium eget vestibulum a, bibendum id velit. In urna orci, imperdiet quis pulvinar in, pretium et turpis.</p>
-          <p class="text-right font-hairline text-black caveat text-xl">Lorem ipsum dolor sit amet</p>
+          <h2 class="text-left pb-1 text-red-800 font-bold caveat text-2xl">Mr Ivan Chu</h2>
+          <p class="text-left pl-5 text-xl">Throughout the years, we have worked hard to improve our service delivery as part of our airline wide initiative to enhance customer experience.</p>
+          <p class="text-right font-hairline text-black caveat text-xl">CEO, Cathay Pacific Airways</p>
         </div>
       </div>
       <!-- our staff -->
